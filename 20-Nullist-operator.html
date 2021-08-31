@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nullist coalising operator</title>
+</head>
+
+<body>
+  <script>
+    let parameter
+    let data = parameter
+
+    // oldest
+    if(data === undefined || data === null){
+       // kalau undefined, isi variabel data dengan nilai default
+       data = "Nilai default"
+    }
+    document.writeln(`<p> ${data} </p>`); // Nilai Default
+
+    // newest
+    data = parameter ?? "Nilai default"
+    document.writeln(`<p> ${data} </p>`); // Nilai Default
+
+    // jika variable ada, ambil value dari varibale data
+    parameter = "value"
+    data = parameter ?? "Nilai default"
+    document.writeln(`<p> ${data} </p>`); // Nilai Default
+  </script>
+</body>
+
+</html>
