@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function Arrow / Anonymous</title>
+</head>
+
+<body>
+  <script>
+    /*
+    Kekuranan arrow func:
+    - tidak memiliki fitur arguments object
+    - tidak bisa menngunakan function generator
+    - tidak bisa mengakses this
+    - tidak bisa mengakses keyword super
+    */
+
+    const sayHello = (name) => {
+      const say = `Hello ${name} <br>`
+      document.writeln(say)
+    }
+    sayHello("Gian")
+
+    // Short code atau one liner
+    const sayHelo = name => document.writeln(`Hello ${name}`)
+    sayHelo("Akbar")
+
+    // tanpa parameter
+    const test = () => document.writeln(`<p> Haloo </p>`)
+    // daua parameter
+    const kenalan = (myFriends, myName) =>  document.writeln(`<p>Halo ${myFriends}, kenalin namaku ${myName} </p>`)
+    kenalan("akbar", "Gian")
+
+    // arrow function
+    function giveMeName(callback){
+      callback("otoing")
+    }
+    giveMeName(name=>document.writeln(`Hello, apa kabar ${name} ?`))
+  </script>
+</body>
+
+</html>

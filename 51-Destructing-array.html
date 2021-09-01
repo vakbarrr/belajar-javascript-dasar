@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destructuring Array</title>
+</head>
+
+<body>
+  <script>
+    // pemecah data dalama rray
+    const names = ["Gian", "akbar", "alex", "otong"]
+    const [satu, dua, tiga, ...lainnya] = names
+
+    document.writeln(satu)
+    document.writeln(dua)
+    document.writeln(tiga)
+    document.writeln(lainnya)
+
+    // mengambil data dalam object
+    const person = {
+      firstName: "Gian",
+      lastName: "Akbar",
+      address: {
+        street: "Jl Al Hidayah",
+        city: "Jakarta",
+        country: "Indonesia"
+      },
+      skills: {
+        bahasa: "Jawa",
+        coding: "Javascript",
+        musik: "guitar hero"
+      },
+      hobby: "tiduer",
+    }
+
+    const {
+      firstName,
+      lastName,
+      skills: {
+        bahasa,
+        coding,
+        musik
+      },
+      address,
+      ...others
+    } = person
+    document.writeln(`<p>${firstName}</p>`)
+    document.writeln(`<p>${lastName}</p>`)
+    document.writeln(`<p>${address}</p>`)
+    document.writeln(`<p>${bahasa}</p>`)
+    document.writeln(`<p>${coding}</p>`)
+    document.writeln(`<p>${musik}</p>`)
+    document.writeln(`<p>${others}</p>`)
+  </script>
+</body>
+
+</html>
