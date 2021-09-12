@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asycn Await</title>
+    <script>
+        function getProductUrl(keyword) {
+            return `https://www.blibli.com/backend/search/products?searchTerm=${keyword}`
+        }
+
+        function getProducts(keyword) {
+            return new Promise(function 
+            (resolve, reject) {
+                const ajax = new XMLHttpRequest()
+                ajax.onload = function () {
+                    if (ajax.status === 200) {
+                        const data = JSON.parse(ajax.responseText)
+                        resolve(data)
+                    }else{
+                        reject(Error(ajax.statusText))
+                    }
+                }
+                ajax.open("GET", getProductUrl(keyword))
+                ajax.send()
+            })
+        }
+
+        function clearProducts() {
+            const productU1 = document.getElementById("products")
+            productU1.textContent = ""
+        }
+
+        function displatProducts(data) {
+            data.data.products.forEach(produc => displatProducts("product"))
+        }
+
+        function displayProduct(product) {
+            const productLi = document.getElementById("li")
+            productLi.textContent = product.name
+
+            const productU1 = document.getElementById
+            ("products")
+            productU1.appendChild(productLi)
+        }
+
+        function buttonClick() {
+            // Code Asycn await here
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="keyword">
+    <button onclick="buttonOnclick()">Search product</button>
+    <ul id="products"></ul>
+</body>
+</html>

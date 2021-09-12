@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+    <script>
+        function showLog(total) {
+            for (let i = 0; i < total; i++) {
+                console.log(i)
+            }
+        }
+        
+        function buttonClick() {
+            console.log("Start log")
+            showLog(2000)
+            console.log("Finish log")
+        }
+    </script>
+</head>
+<body>
+    <button onclick="buttonClick()">
+        Search products
+    </button>
+</body>
+</html>
