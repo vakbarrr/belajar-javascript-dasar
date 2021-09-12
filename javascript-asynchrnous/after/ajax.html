@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+    <script>
+        function getProductsUrl(keyword) {
+            return `https://www.blibli.com/backend/search/products?searchTerm=${keyword}`;
+        }
+
+        function getProducts(keyword) {
+            // Code AJAX Here!
+            const ajax = new XMLHttpRequest()
+            ajax.onload = function () {
+                if(ajax.status  === 200){
+                    const data = JSON.parse(ajax.responseText)
+                    callbackSuccess(data)
+                }else{
+                    callbackError
+                }
+            }
+
+            const url = getProductsUrl(keyword)
+            ajax.open("GET", url)
+            ajax.send()
+            
+            // tidak bisa dilakukan secara sync
+            // const response = JSON.parse(ajax.responseText);
+            // console.log(response);
+        }
+
+        function getProductsError() {
+            console.log("Error get products")
+            alert("Error get products")
+        }
+
+        function clearProducts() {
+            const productU1 = document.getElementById("products")
+            productU1.textContent = ""
+        }
+
+        function displayProducts(data) {
+            data.data.products.forEach(product => displayProduct(product))
+        }
+
+        function displayProduct(product) {
+            const produtLi = document.createElement("li")
+            productLi.textContent = product.name
+
+            const productU1 = document.getElementById("products")
+            productU1.appendChild(productLi)
+        }
+
+        function clearTableProducts() {
+            const productU1 = document.getElementById("table-products")
+            productU1.textContent = ""
+        }
+
+        function displayTableProducts(data) {
+            const table = document.createElement("table")
+            table.setAttribute("border", 1)
+
+            let index = 0
+            data.data.products.forEach(product => {
+                table.insertRow(index).insertCell(0).innerText = product.name
+                index++
+            })
+
+            const tableProduct = document.getElementById("table-products")
+            tableProduct.appendChild(table)
+        }
+
+        function buttonClick() {
+           getProducts(document.getElementById("keyword").value, function (data) {
+               console.log(data)
+           }, function () {
+               console.log("Error")
+           })
+
+           getProducts(document.getElementById("keyword").value, function (data) {
+                clearProducts();
+                displayProducts(data)
+           }, function () {
+               console.log("Error")
+           })
+
+           getProducts(document.getElementById("keyword").value, function (data) {
+                clearTableProducts();
+                displayTableProducts(data)
+           }, function () {
+               console.log("Error")
+           })
+
+           console.log("Succes click button!")
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="keyword">
+    <button onclick="buttonClick()">Search products</button>
+    <ul id="products"></ul>
+    <div id="table-products"></div>
+</body>
+</html>
