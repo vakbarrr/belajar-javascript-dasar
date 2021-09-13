@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+    <script>
+        {
+            // array loop
+            const array = ["Kdek", "sadas", "asdasdas"]
+            
+            array.forEach(function (value, index) {
+                console.info(`${index} : ${value}`)
+            })
+
+            array.forEach((value, index) => console.info(`${index} : ${value}`))
+
+            array.forEach(value => console.info(value))
+        }
+
+        {
+            // array queue
+            const queue = []
+
+            queue.push("gian")
+            queue.push("sdadfas")
+            queue.push("asdasdas")
+
+            console.info(queue.shift())
+            console.info(queue.shift())
+            console.info(queue.shift())
+            console.info(queue.shift())
+        }
+
+        {
+            // array stack
+
+            const stack = []
+            stack.push("asdas")
+            stack.push("werwerwe")
+            stack.push("asdwerweras")
+
+            console.info(stack.pop())
+            console.info(stack.pop())
+            console.info(stack.pop())
+            console.info(stack.pop())
+        }
+
+        {
+            // array filter
+            const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9,10]
+            const ganjil = numbers.fiter(value => value % 2 === 1)
+            const genap = numbers.fiter(value => value % 2 === 1)
+            
+            console.info(numbers)
+            console.info(ganjil)
+            console.info(genap)
+        }
+
+        {
+            // array transform
+
+            const names = ["sdaasddas", "asdasda", "sadasdas"]
+            const namesUpper = names.map(value => value.toUpperCase())
+            console.info(namesUpper)
+
+            const namesReduce = names.reduce((before, value) => before + " " + value)
+            console.info(namesReduce)
+
+            const namesRight = names.reduceRight((before, value) => before + " " + value)
+
+            const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            const total = numbers.reduce((before, value) => before + value)
+            console.info(total)
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
